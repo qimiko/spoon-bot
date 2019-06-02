@@ -12,6 +12,11 @@ struct Handler;
 
 impl EventHandler for Handler {
     fn message(&self, ctx: Context, msg: Message) {
+
+        if msg.author.bot {
+            return;
+        }
+
         // this is likely incredibly inefficient but i can't think of a better way to do this
         let mut files = Vec::new();
 
