@@ -1,6 +1,6 @@
 [package]
 name = "spoon_bot"
-version = "1.2.1"
+version = "1.2.2"
 description = "bot that automatically helps you with your spoon related problems"
 authors = ["zmxhawrhbg <25387744+Zmxhawrhbg@users.noreply.github.com>"]
 edition = "2018"
