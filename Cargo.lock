@@ -1132,8 +1132,8 @@ version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "spoon"
-version = "0.1.0"
+name = "spoon_bot"
+version = "1.0.0"
 dependencies = [
  "dotenv 0.14.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "serenity 0.6.0-rc.1 (registry+https://github.com/rust-lang/crates.io-index)",

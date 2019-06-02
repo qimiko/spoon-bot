@@ -1,8 +1,12 @@
 [package]
-name = "spoon"
-version = "0.1.0"
+name = "spoon_bot"
+version = "1.0.0"
+description = "bot that automatically helps you with your poop problems"
 authors = ["zmxhawrhbg <25387744+Zmxhawrhbg@users.noreply.github.com>"]
 edition = "2018"
+
+[badges]
+maintenance = { status = "as-is" }
 
 [dependencies]
 serenity = "0.6.0-rc.1"
