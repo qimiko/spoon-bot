@@ -54,6 +54,7 @@ fn get_image_list() -> Vec<Reaction<'static>> {
         Reaction {trigger: "poop",   path: "spoon.jpg"},
         Reaction {trigger: "oman",   path: "banana.jpg"},
         Reaction {trigger: "ayup",   path: "ayup.jpg"},
+        Reaction {trigger: "what‘s", path: "up.png"},
         Reaction {trigger: "what's", path: "up.png"}];
 
     reactions
