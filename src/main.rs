@@ -12,8 +12,18 @@ struct Handler;
 
 impl EventHandler for Handler {
     fn message(&self, ctx: Context, msg: Message) {
-        if msg.content.contains("poop") {
-            if let Err(why) = msg.channel_id.send_files(&ctx.http, vec!["./spoon.jpg"], |m| {
+        // this is likely incredibly inefficient but i can't think of a better way to do this
+        let mut files = Vec::new();
+
+        let reactions_list = get_image_list();
+        for reaction in &reactions_list {
+            if msg.content.to_lowercase().contains(reaction.trigger) {
+                files.push(reaction.path);
+            }
+        }
+
+        if files.len() > 0 {
+            if let Err(why) = msg.channel_id.send_files(&ctx.http, files, |m| {
                 m.content("")
             }) {
                 println!("Error sending message: {:?}", why);
@@ -27,12 +37,31 @@ impl EventHandler for Handler {
     }
 }
 
+struct Reaction<'a> {
+    trigger: &'a str,
+    path: &'a str
+}
+
+fn get_image_list() -> Vec<Reaction<'static>> {
+    // ok time to figure this out 
+    let reactions = vec![
+        Reaction {trigger: "bruh",   path: "bruh.png"}, 
+        Reaction {trigger: "poop",   path: "spoon.jpg"},
+        Reaction {trigger: "oman",   path: "banana.jpg"},
+        Reaction {trigger: "ayup",   path: "ayup.jpg"},
+        Reaction {trigger: "what's", path: "up.png"}];
+
+    reactions
+}
+
 fn main() {
 
-    let image = Path::new("./spoon.jpg");
+    let image_list = get_image_list();
 
-    if !image.exists() {
-        panic!("Please put an image at spoon.jpg");
+    for reactions in &image_list {
+        if !Path::new(reactions.path).exists() {
+            panic!("Image {} does not exist in images/", reactions.path);
+        }
     }
 
     dotenv::dotenv().ok();
@@ -44,5 +73,4 @@ fn main() {
     if let Err(why) = client.start_autosharded() {
         println!("Client error: {:?}", why);
     }
-
 }
