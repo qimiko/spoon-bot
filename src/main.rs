@@ -21,8 +21,7 @@ impl EventHandler for Handler {
         let mut files = Vec::new();
         let mut content = String::new();
 
-        let reactions_list = get_image_list();
-        for reaction in &reactions_list {
+        for reaction in REACTIONS {
             if msg.content.to_lowercase().contains(reaction.trigger) {
                 match reaction.response {
                     ReactionType::Image => files.push(reaction.path),
@@ -62,24 +61,18 @@ struct Reaction<'a> {
     response: &'a ReactionType
 }
 
-fn get_image_list() -> Vec<Reaction<'static>> {
-    // ok time to figure this out 
-    let reactions = vec![
-        Reaction {trigger: "bruh",    path: "bruh.png",   response: &ReactionType::Image}, 
-        Reaction {trigger: "poop",    path: "spoon.jpg",  response: &ReactionType::Image},
-        Reaction {trigger: "oman",    path: "banana.jpg", response: &ReactionType::Image},
-        Reaction {trigger: "ayup",    path: "ayup.jpg",   response: &ReactionType::Image},
-        Reaction {trigger: "what‘s",  path: "up.png",     response: &ReactionType::Image},
-        Reaction {trigger: "what's",  path: "up.png",     response: &ReactionType::Image},
-        Reaction {trigger: "pp niga", path: "pp niga",    response: &ReactionType::Text}];
-
-    reactions
-}
+const REACTIONS: &'static [Reaction] = &[
+    Reaction {trigger: "bruh",    path: "bruh.png",   response: &ReactionType::Image}, 
+    Reaction {trigger: "poop",    path: "spoon.jpg",  response: &ReactionType::Image},
+    Reaction {trigger: "oman",    path: "banana.jpg", response: &ReactionType::Image},
+    Reaction {trigger: "ayup",    path: "ayup.jpg",   response: &ReactionType::Image},
+    Reaction {trigger: "what‘s",  path: "up.png",     response: &ReactionType::Image},
+    Reaction {trigger: "what's",  path: "up.png",     response: &ReactionType::Image},
+    Reaction {trigger: "pp niga", path: "pp niga",    response: &ReactionType::Text} 
+];
 
 fn main() {
-    let image_list = get_image_list();
-
-    for reaction in &image_list {
+    for reaction in REACTIONS {
         if !Path::new(reaction.path).exists() && reaction.response != &ReactionType::Text {
             panic!("Image {} does not exist in images/", reaction.path);
         }
