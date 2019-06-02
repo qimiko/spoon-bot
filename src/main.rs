@@ -62,13 +62,14 @@ struct Reaction<'a> {
 }
 
 const REACTIONS: &'static [Reaction] = &[
-    Reaction {trigger: "bruh",    path: "bruh.png",   response: &ReactionType::Image}, 
-    Reaction {trigger: "poop",    path: "spoon.jpg",  response: &ReactionType::Image},
-    Reaction {trigger: "oman",    path: "banana.jpg", response: &ReactionType::Image},
-    Reaction {trigger: "ayup",    path: "ayup.jpg",   response: &ReactionType::Image},
-    Reaction {trigger: "what‘s",  path: "up.png",     response: &ReactionType::Image},
-    Reaction {trigger: "what's",  path: "up.png",     response: &ReactionType::Image},
-    Reaction {trigger: "pp niga", path: "pp niga",    response: &ReactionType::Text} 
+    Reaction {trigger: "bruh",     path: "bruh.png",     response: &ReactionType::Image}, 
+    Reaction {trigger: "poop",     path: "spoon.jpg",    response: &ReactionType::Image},
+    Reaction {trigger: "oman",     path: "banana.jpg",   response: &ReactionType::Image},
+    Reaction {trigger: "ayup",     path: "ayup.jpg",     response: &ReactionType::Image},
+    Reaction {trigger: "what‘s",   path: "up.png",       response: &ReactionType::Image},
+    Reaction {trigger: "screemch", path: "screemch.png", response: &ReactionType::Image},
+    Reaction {trigger: "what's",   path: "up.png",       response: &ReactionType::Image},
+    Reaction {trigger: "pp niga",  path: "pp niga",      response: &ReactionType::Text} 
 ];
 
 fn main() {
