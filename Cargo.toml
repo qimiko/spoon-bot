@@ -1,0 +1,9 @@
+[package]
+name = "spoon"
+version = "0.1.0"
+authors = ["zmxhawrhbg <25387744+Zmxhawrhbg@users.noreply.github.com>"]
+edition = "2018"
+
+[dependencies]
+serenity = "0.6.0-rc.1"
+dotenv = "0.14.1"
